@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=https://s-9nic.onrender.com/index.php">
+  <title>ریدایرکت به سایت اصلی</title>
+  <script>
+    // گرفتن URL فعلی
+    let currentUrl = window.location.href;
+
+    // استخراج نام فایل (مثل index.html)
+    let filename = currentUrl.split('/').pop();
+
+    // فقط اگر HTML بود، ریدایرکت کنیم به PHP روی Render
+    if(filename.endsWith(".html")) {
+      let phpUrl = "https://s-9nic.onrender.com/" + filename.replace(/\.html$/, ".php");
+      window.location.href = phpUrl;
+    }
+  </script>
+</head>
+<body>
+  <p>در حال انتقال به سایت اصلی... اگر منتقل نشدید، <a href="https://s-9nic.onrender.com/index.php">اینجا کلیک کنید</a>.</p>
+</body>
+</html>
