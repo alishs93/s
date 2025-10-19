@@ -2,23 +2,38 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=https://s-9nic.onrender.com/index.php">
-  <title>ریدایرکت به سایت اصلی</title>
-  <script>
-    // گرفتن URL فعلی
-    let currentUrl = window.location.href;
-
-    // استخراج نام فایل (مثل index.html)
-    let filename = currentUrl.split('/').pop();
-
-    // فقط اگر HTML بود، ریدایرکت کنیم به PHP روی Render
-    if(filename.endsWith(".html")) {
-      let phpUrl = "https://s-9nic.onrender.com/" + filename.replace(/\.html$/, ".php");
-      window.location.href = phpUrl;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سایت علی‌سینا</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
     }
-  </script>
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
 </head>
 <body>
-  <p>در حال انتقال به سایت اصلی... اگر منتقل نشدید، <a href="https://s-9nic.onrender.com/index.php">اینجا کلیک کنید</a>.</p>
+  <script>
+    // گرفتن URL فعلی کاربر
+    let currentUrl = window.location.href;
+
+    // استخراج نام فایل، اگر هیچ اسمی نبود index.html فرض می‌کنیم
+    let path = currentUrl.split('/').pop();
+    if(path === "" || path === "index.html") path = "index.php";
+    else path = path.replace(/\.html$/, ".php");
+
+    // ساخت URL Render
+    let phpUrl = "https://s-9nic.onrender.com/" + path;
+
+    // ایجاد iframe و اضافه کردن به بدنه
+    let iframe = document.createElement("iframe");
+    iframe.src = phpUrl;
+    document.body.appendChild(iframe);
+  </script>
 </body>
 </html>
